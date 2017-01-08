@@ -1,0 +1,31 @@
+package com.pooja.viewinformation;
+
+/**
+ * Created by Pooja on 1/7/2017.
+ */
+
+public class Eachrow
+{
+    private String tid;
+    private String fname;
+    private String lname;
+
+    public Eachrow(String id,String firstname,String lastname)
+    {
+        tid=id;
+        fname=firstname;
+        lname=lastname;
+    }
+
+    public String getTid() {
+        return tid;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+}

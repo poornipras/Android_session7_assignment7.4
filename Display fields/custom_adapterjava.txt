@@ -1,0 +1,60 @@
+package com.pooja.viewinformation;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import static android.R.attr.resource;
+
+/**
+ * Created by Pooja on 1/7/2017.
+ */
+
+public class Custom_Adapter extends ArrayAdapter<Eachrow>
+{
+    private LayoutInflater mlayoutInflater;
+    private ArrayList<Eachrow>eachrows;
+    private int textviewResourceId;
+
+    public Custom_Adapter(Context context, int TextViewResourceId, ArrayList<Eachrow> eachrows)
+    {
+        super(context,TextViewResourceId,eachrows);
+        this.eachrows=eachrows;
+        mlayoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        textviewResourceId=TextViewResourceId;
+    }
+
+    public View getView(int position, View convertview, ViewGroup parents)
+    {
+
+     convertview=mlayoutInflater.inflate(R.layout.each_row,null);
+        Eachrow eachrow=eachrows.get(position);
+        if(eachrow != null)
+        {
+            TextView id=(TextView)convertview.findViewById(R.id.txt_id);
+            TextView fname=(TextView)convertview.findViewById(R.id.txt_firstname);
+            TextView lname=(TextView)convertview.findViewById(R.id.txt_lastname);
+
+             if(id!=null)
+            {
+                id.setText(eachrow.getTid());
+            }
+            if(fname != null)
+            {
+                fname.setText(eachrow.getFname());
+            }
+            if(lname != null)
+            {
+                lname.setText(eachrow.getLname());
+            }
+        }
+return convertview;
+    }
+}
